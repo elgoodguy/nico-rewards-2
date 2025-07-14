@@ -34,15 +34,18 @@ export class RewardsService {
         data: {
           shopifyCustomerId,
           shop: this.shop,
-          email: customerData.email,
-          firstName: customerData.firstName,
-          lastName: customerData.lastName,
+          email: customerData.email || null,
+          firstName: customerData.firstName || null,
+          lastName: customerData.lastName || null,
           totalPoints: 0,
           totalSpent: 0,
-          membershipTier: 'BRONZE' as const
+          membershipTier: 'BRONZE'
         },
         include: {
-          transactions: true
+          transactions: {
+            orderBy: { createdAt: 'desc' },
+            take: 10
+          }
         }
       });
 
