@@ -39,7 +39,7 @@ export class RewardsService {
           lastName: customerData.lastName,
           totalPoints: 0,
           totalSpent: 0,
-          membershipTier: 'BRONZE'
+          membershipTier: 'BRONZE' as const
         },
         include: {
           transactions: true
@@ -47,7 +47,19 @@ export class RewardsService {
       });
 
       // Give welcome bonus
-      await this.addWelcomeBonus(customer.id);
+      if (customer) {
+        await this.addWelcomeBonus(customer.id);
+        // Refresh customer data to include the welcome bonus transaction
+        customer = await prisma.customer.findUnique({
+          where: { id: customer.id },
+          include: {
+            transactions: {
+              orderBy: { createdAt: 'desc' },
+              take: 10
+            }
+          }
+        });
+      }
     }
 
     return customer;

@@ -170,8 +170,8 @@ export default function Dashboard() {
                             #{index + 1} {customer.firstName} {customer.lastName}
                           </Text>
                           <Badge tone={
-                            customer.membershipTier === 'GOLD' ? 'warning' :
-                            customer.membershipTier === 'SILVER' ? 'info' : 'default'
+                            customer.membershipTier === 'GOLD' ? 'attention' :
+                            customer.membershipTier === 'SILVER' ? 'success' : undefined
                           }>
                             {customer.membershipTier}
                           </Badge>
