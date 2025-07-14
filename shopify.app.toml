@@ -3,7 +3,7 @@
 client_id = "5c542354f25b7f53f8f87bed0457cc5d"
 name = "nico-rewards"
 handle = "nico-rewards"
-application_url = "https://d32d84706654.ngrok-free.app"
+application_url = "https://nico-rewards-2.netlify.app"
 embedded = true
 
 [build]
@@ -18,12 +18,12 @@ api_version = "2025-07"
 scopes = "read_customers,read_orders"
 
 [auth]
-redirect_urls = ["https://d32d84706654.ngrok-free.app/auth/callback", "https://d32d84706654.ngrok-free.app/auth/shopify/callback", "https://d32d84706654.ngrok-free.app/api/auth/callback"]
+redirect_urls = ["https://nico-rewards-2.netlify.app/auth/callback", "https://nico-rewards-2.netlify.app/auth/shopify/callback", "https://nico-rewards-2.netlify.app/api/auth/callback"]
 
 [pos]
 embedded = false
 
 [app_proxy]
-url = "https://d32d84706654.ngrok-free.app"
+url = "https://nico-rewards-2.netlify.app"
 subpath = "proxy"
 prefix = "apps"
