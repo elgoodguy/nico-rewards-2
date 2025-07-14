@@ -1,13 +1,14 @@
 [build]
-  command = "npm run setup && npm run build"
-  publish = "build"
+  command = "npm run build"
+  publish = "build/client"
 
 [functions]
+  directory = "build/server"
   node_bundler = "esbuild"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/.netlify/functions/remix-server"
   status = 200
 
 [dev]
