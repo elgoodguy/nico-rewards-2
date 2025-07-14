@@ -1,0 +1,66 @@
+{{ 'nico-rewards.js' | asset_url | script_tag }}
+
+<script>
+  // Pass settings to the widget
+  window.nicoRewardsSettings = {
+    widget_color: "{{ block.settings.widget_color }}",
+    widget_position: "{{ block.settings.widget_position }}",
+    show_points_counter: {{ block.settings.show_points_counter | json }}
+  };
+
+  // Pass Shopify customer data
+  {% if customer %}
+    window.Shopify = window.Shopify || {};
+    window.Shopify.customer = {
+      id: {{ customer.id | json }},
+      email: {{ customer.email | json }},
+      first_name: {{ customer.first_name | json }},
+      last_name: {{ customer.last_name | json }}
+    };
+  {% endif %}
+</script>
+
+{% schema %}
+{
+  "name": "Nico Rewards Widget",
+  "target": "body",
+  "settings": [
+    {
+      "type": "color",
+      "id": "widget_color",
+      "label": "Widget Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "widget_position",
+      "label": "Widget Position",
+      "options": [
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "bottom-left", 
+          "label": "Bottom Left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        }
+      ],
+      "default": "bottom-right"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_points_counter",
+      "label": "Show Points Counter",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

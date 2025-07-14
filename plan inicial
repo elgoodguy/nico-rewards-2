@@ -1,0 +1,122 @@
+Plan para Nico Rewards - App de Recompensas para Shopify                                                                                               │ │
+│ │                                                                                                                                                        │ │
+│ │ Arquitectura Técnica Recomendada                                                                                                                       │ │
+│ │                                                                                                                                                        │ │
+│ │ 1. Stack de Desarrollo                                                                                                                                 │ │
+│ │                                                                                                                                                        │ │
+│ │ - Framework: Remix con TypeScript (template oficial de Shopify 2025)                                                                                   │ │
+│ │ - CLI: Shopify CLI para desarrollo y deployment                                                                                                        │ │
+│ │ - Base de datos: Prisma + SQLite (dev) / PostgreSQL (prod)                                                                                             │ │
+│ │ - Autenticación: Token Exchange Flow (nuevo estándar 2025)                                                                                             │ │
+│ │ - Widget: Theme App Extensions con App Embed Blocks                                                                                                    │ │
+│ │                                                                                                                                                        │ │
+│ │ 2. Estructura del Sistema                                                                                                                              │ │
+│ │                                                                                                                                                        │ │
+│ │ Backend (Remix App)                                                                                                                                    │ │
+│ │                                                                                                                                                        │ │
+│ │ - API para gestión de puntos y niveles                                                                                                                 │ │
+│ │ - Dashboard administrativo                                                                                                                             │ │
+│ │ - Integración con Shopify GraphQL Admin API                                                                                                            │ │
+│ │ - Webhooks para tracking de órdenes                                                                                                                    │ │
+│ │ - Sistema de metafields para persistencia                                                                                                              │ │
+│ │                                                                                                                                                        │ │
+│ │ Frontend Widget                                                                                                                                        │ │
+│ │                                                                                                                                                        │ │
+│ │ - Widget redondo flotante usando Theme App Extensions                                                                                                  │ │
+│ │ - Modal/popup para login y gestión de rewards                                                                                                          │ │
+│ │ - Integración con App Bridge para autenticación                                                                                                        │ │
+│ │ - Responsive design para móvil y desktop                                                                                                               │ │
+│ │                                                                                                                                                        │ │
+│ │ 3. Funcionalidades Core                                                                                                                                │ │
+│ │                                                                                                                                                        │ │
+│ │ Sistema de Niveles                                                                                                                                     │ │
+│ │                                                                                                                                                        │ │
+│ │ - Bronze: 1-2% cashback (configurado por admin)                                                                                                        │ │
+│ │ - Silver: 2-3% cashback                                                                                                                                │ │
+│ │ - Gold: 3-5% cashback                                                                                                                                  │ │
+│ │ - Criterios de nivel basados en gasto total en período definido                                                                                        │ │
+│ │                                                                                                                                                        │ │
+│ │ Tracking de Recompensas                                                                                                                                │ │
+│ │                                                                                                                                                        │ │
+│ │ - Metafields de customer para almacenar:                                                                                                               │ │
+│ │   - Puntos totales                                                                                                                                     │ │
+│ │   - Nivel actual                                                                                                                                       │ │
+│ │   - Historial de transacciones                                                                                                                         │ │
+│ │   - Fecha última actualización                                                                                                                         │ │
+│ │ - Webhook de órdenes para calcular cashback automático                                                                                                 │ │
+│ │                                                                                                                                                        │ │
+│ │ Sistema de Redención                                                                                                                                   │ │
+│ │                                                                                                                                                        │ │
+│ │ - Cupones de descuento automáticos                                                                                                                     │ │
+│ │ - Envío gratis                                                                                                                                         │ │
+│ │ - Productos específicos                                                                                                                                │ │
+│ │ - Integración con Shopify Discount API                                                                                                                 │ │
+│ │                                                                                                                                                        │ │
+│ │ 4. Implementación por Fases                                                                                                                            │ │
+│ │                                                                                                                                                        │ │
+│ │ Fase 1: Setup Básico                                                                                                                                   │ │
+│ │                                                                                                                                                        │ │
+│ │ - Crear app con Shopify CLI                                                                                                                            │ │
+│ │ - Configurar autenticación y permissions                                                                                                               │ │
+│ │ - Setup de base de datos y modelos                                                                                                                     │ │
+│ │ - Dashboard admin básico                                                                                                                               │ │
+│ │                                                                                                                                                        │ │
+│ │ Fase 2: Core Functionality                                                                                                                             │ │
+│ │                                                                                                                                                        │ │
+│ │ - Sistema de tracking de órdenes                                                                                                                       │ │
+│ │ - Cálculo y almacenamiento de puntos                                                                                                                   │ │
+│ │ - Lógica de niveles de membresía                                                                                                                       │ │
+│ │ - APIs REST para widget                                                                                                                                │ │
+│ │                                                                                                                                                        │ │
+│ │ Fase 3: Widget de Storefront                                                                                                                           │ │
+│ │                                                                                                                                                        │ │
+│ │ - Theme App Extension con embed block                                                                                                                  │ │
+│ │ - Widget flotante con diseño responsivo                                                                                                                │ │
+│ │ - Integración con customer login                                                                                                                       │ │
+│ │ - Modal de gestión de rewards                                                                                                                          │ │
+│ │                                                                                                                                                        │ │
+│ │ Fase 4: Sistema de Redención                                                                                                                           │ │
+│ │                                                                                                                                                        │ │
+│ │ - Generación automática de cupones                                                                                                                     │ │
+│ │ - Sistema de redención de puntos                                                                                                                       │ │
+│ │ - Notificaciones y confirmaciones                                                                                                                      │ │
+│ │ - Historial de transacciones                                                                                                                           │ │
+│ │                                                                                                                                                        │ │
+│ │ Fase 5: Dashboard Administrativo                                                                                                                       │ │
+│ │                                                                                                                                                        │ │
+│ │ - Panel de configuración de niveles                                                                                                                    │ │
+│ │ - Analytics y reportes                                                                                                                                 │ │
+│ │ - Gestión manual de puntos                                                                                                                             │ │
+│ │ - Configuración de rewards                                                                                                                             │ │
+│ │                                                                                                                                                        │ │
+│ │ 5. Consideraciones Técnicas                                                                                                                            │ │
+│ │                                                                                                                                                        │ │
+│ │ Performance y Seguridad                                                                                                                                │ │
+│ │                                                                                                                                                        │ │
+│ │ - Widget carga solo en páginas necesarias                                                                                                              │ │
+│ │ - Validación server-side de todas las transacciones                                                                                                    │ │
+│ │ - Rate limiting en APIs                                                                                                                                │ │
+│ │ - Encriptación de datos sensibles                                                                                                                      │ │
+│ │                                                                                                                                                        │ │
+│ │ Escalabilidad                                                                                                                                          │ │
+│ │                                                                                                                                                        │ │
+│ │ - Uso de metafields para evitar límites de API                                                                                                         │ │
+│ │ - Caching de configuraciones                                                                                                                           │ │
+│ │ - Webhooks asíncronos para processing                                                                                                                  │ │
+│ │ - Background jobs para cálculos pesados                                                                                                                │ │
+│ │                                                                                                                                                        │ │
+│ │ Compliance                                                                                                                                             │ │
+│ │                                                                                                                                                        │ │
+│ │ - Cumple con App Store guidelines                                                                                                                      │ │
+│ │ - Usa Theme App Extensions (requerido)                                                                                                                 │ │
+│ │ - Manejo seguro de datos de customer                                                                                                                   │ │
+│ │ - Privacy policy integration                                                                                                                           │ │
+│ │                                                                                                                                                        │ │
+│ │ 6. Timeline Estimado                                                                                                                                   │ │
+│ │                                                                                                                                                        │ │
+│ │ - Semana 1-2: Setup y configuración inicial                                                                                                            │ │
+│ │ - Semana 3-4: Backend APIs y webhook integration                                                                                                       │ │
+│ │ - Semana 5-6: Widget de storefront y frontend                                                                                                          │ │
+│ │ - Semana 7-8: Sistema de redención                                                                                                                     │ │
+│ │ - Semana 9-10: Dashboard admin y testing                                                                                                               │ │
+│ │ - Semana 11-12: Optimizaciones y deployment

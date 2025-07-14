@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+
+[dev]
+  command = "npm run dev"
+
+# Environment variables (set these in Netlify Dashboard)
+# SHOPIFY_API_KEY
+# SHOPIFY_API_SECRET  
+# DATABASE_URL
+# SESSION_SECRET
+# SHOPIFY_APP_URL
+# SCOPES

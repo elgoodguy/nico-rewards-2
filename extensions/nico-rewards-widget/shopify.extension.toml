@@ -1,0 +1,9 @@
+# Learn more about configuring your theme app extension:
+# https://shopify.dev/docs/apps/build/online-store/theme-app-extensions/configuration
+
+api_version = "2024-10"
+
+[[extensions]]
+type = "theme_app_extension"
+name = "Nico Rewards Widget"
+handle = "nico-rewards-widget"
