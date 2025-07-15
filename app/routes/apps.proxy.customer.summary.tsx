@@ -21,9 +21,14 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export async function loader({ request }: LoaderFunctionArgs) {
   try {
+    // Add debug logging
+    console.log("Proxy request URL:", request.url);
+    console.log("Proxy request headers:", Object.fromEntries(request.headers.entries()));
+    
     const { session } = await authenticate.public.appProxy(request);
     
     if (!session) {
+      console.log("No session found for proxy request");
       return json({ error: "Unauthorized", success: false }, { 
         status: 401,
         headers: { 
@@ -86,9 +91,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
     });
   } catch (error) {
     console.error("Error fetching customer summary:", error);
+    console.error("Error stack:", error.stack);
     return json({ 
       success: false,
-      error: "Internal server error" 
+      error: "Internal server error",
+      details: error.message 
     }, { 
       status: 500,
       headers: { 

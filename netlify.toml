@@ -6,6 +6,15 @@
   command = "npm run dev"
   framework = "vite"
 
+[functions]
+  directory = "netlify/functions"
+  included_files = ["build/server/**/*"]
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/remix-server"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
