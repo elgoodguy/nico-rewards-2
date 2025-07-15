@@ -5,6 +5,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import type { HeadersFunction } from "@remix-run/node";
+
+export const headers: HeadersFunction = () => ({
+  "X-Frame-Options": "ALLOWALL",
+  "Content-Security-Policy": "frame-ancestors https://admin.shopify.com https://*.myshopify.com",
+});
 
 export default function App() {
   return (
