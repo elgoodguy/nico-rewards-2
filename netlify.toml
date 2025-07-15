@@ -6,22 +6,11 @@
   command = "npm run dev"
   framework = "vite"
 
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server/:splat"
-  status = 200
-
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "ALLOWALL"
     Content-Security-Policy = "frame-ancestors https://admin.shopify.com https://*.myshopify.com"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
 
 # Environment variables (set these in Netlify Dashboard)
 # SHOPIFY_API_KEY
